@@ -35,14 +35,12 @@ classroom = [
 
 
 def add_student(name, email=None):
-    """Add a new student to the classroom
-    with the following keys:
-    'name': the given name
-    'email': if email is given use it otherwise use <name>@example.com
-             in lowercase, you can use the `s.lower()` method
-    'grade': initialize with empty list
-    """
-    pass
+    if(email==None):
+        lowName=""
+        for s in name:
+            lowName+=s.lower()
+        email=lowName+'@example.com'
+    classroom.append({'name':name,'email':email,'grades':[]})
 
 
 def delete_student(name):
