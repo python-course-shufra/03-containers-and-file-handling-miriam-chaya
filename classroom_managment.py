@@ -64,15 +64,7 @@ def add_grade(name, profession, grade):
 
 
 def avg_grade(name, profession):
-    for student in classroom:
-        if student['name'] == name:
-            grades = [grade for subj, grade in student['grades'] if subj == profession]
-            if len(grades) > 0:
-                gpa = sum(grades) / len(grades)
-                return gpa
-            else:
-                return None
-    return None
+    pass
 
 
 def get_professions(name):
