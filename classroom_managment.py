@@ -44,18 +44,22 @@ def add_student(name, email=None):
 
 
 def delete_student(name):
-    """Delete a student from the classroom"""
-    pass
+    for student in classroom:
+        if student['name']==name:
+            student.clear()
+
 
 
 def set_email(name, email):
-    """Sets the email of the student"""
-    pass
+    for student in classroom:
+        if student['name']==name:
+            student['email']=email
 
 
 def add_grade(name, profession, grade):
-    """Adds a new grade to the student grades"""
-    pass
+    for student in classroom:
+        if student['name']==name:
+            student['grades']+=((profession,grade),)
 
 
 def avg_grade(name, profession):
