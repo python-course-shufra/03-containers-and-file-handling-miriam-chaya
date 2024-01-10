@@ -32,65 +32,55 @@ classroom = [
         ],
     },
 ]
+def index_of_student(name):
+    for i in range(len(classroom)) :
+        if classroom[i]['name']==name:
+            return i
+
 
 
 def add_student(name, email=None):
-    if(email==None):
-        lowName=""
-        for s in name:
-            lowName+=s.lower()
-        email=lowName+'@example.com'
+    if email is None:
+        email=name.lower()+'@example.com'
     classroom.append({'name':name,'email':email,'grades':[]})
-    return
+    
 
 def delete_student(name):
-    for student in classroom:
-        if student['name']==name:
-            student.clear()
-        return 
+    del classroom[index_of_student(name)]
 
 
 
 def set_email(name, email):
-    for student in classroom:
-        if student['name']==name:
-            student['email']=email
-        return 
+    classroom[index_of_student(name)]['email']==email
 
 
 def add_grade(name, profession, grade):
-    for student in classroom:
-        if student['name']==name:
-            student['grades']+=((profession,grade),)
-        return 
-
-
+    classroom[index_of_student(name)]['grades']+=((profession,grade),)
+    
 
 def avg_grade(name, profession):
     count=0
     sum=0
-    for student in classroom:
-        if(student['name']==name):
-            for sub,grade in student['grades']:
-                if (sub==profession):
-                    count+=1
-                    sum+=grade
-            return sum/count
+    s=classroom[index_of_student(name)]
+    for sub,grade in classroom[s]['grades']:
+        if (sub==profession):
+            count+=1
+            sum+=grade
+        return sum/count
 
                 
 
 
 def get_professions(name):
     professions=[]
-    for student in classroom:
-        if(student['name']==name):
-            professions=[sub for sub,grade in student['grades']]
-        for p in professions:
-            for sub in professions:
-                if(professions[p]==professions[sub]&p!=sub):
-                    professions[sub].clear()
-        return professions
-    return None
+    s=classroom[index_of_student(name)]
+    professions=[sub for sub,grade in classroom[s]['grades']]
+    for p in professions:
+        for sub in professions:
+            if(professions[p]==professions[sub]&p!=sub):
+                professions[sub].clear()
+    return professions
+    
 
 
             
